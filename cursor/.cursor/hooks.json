@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "hooks": {
+    "stop": [{ "command": ".cursor/hooks/auto-commit.sh" }],
+    "beforeSubmitPrompt": [{ "command": ".cursor/hooks/sync-after-restore.py" }]
+  }
+}

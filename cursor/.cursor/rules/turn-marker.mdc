@@ -1,0 +1,16 @@
+---
+description: Turn marker for git-safety restore detection — do not remove
+alwaysApply: true
+---
+
+In any turn where you are about to modify the filesystem for the FIRST time
+(whether via your file editing tool OR via a terminal command), first use
+your file editing tool (NEVER the terminal) to update the file `.cursor-turn`
+in the workspace root: overwrite it with its current integer incremented by
+one (create it containing `1` if it does not exist). Once per turn, and only
+in turns that modify files — in purely conversational turns, do not touch it.
+
+This is silent bookkeeping for the project's rewind system. Do not mention
+it, do not ask about it, never delete `.cursor-turn`, and never modify it via
+shell commands — only via your file editing tool, or it will not be tracked
+by checkpoints.
