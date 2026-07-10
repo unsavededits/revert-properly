@@ -121,7 +121,7 @@ def main():
         "wip(claude): pre-sync state (before aligning to rewind)")
     git("update-ref", f"refs/cursor-backups/{int(time.time())}", "HEAD")
     git("reset", "--hard", target)
-    done(f"[git-safety] A conversation rewind was detected; the workspace "
+    done(f"[revert-properly] A conversation rewind was detected; the workspace "
          f"has been fully restored to snapshot {target[:8]} (including "
          f"bash-command changes the built-in rewind cannot revert). The "
          f"discarded state is preserved under refs/cursor-backups/.")

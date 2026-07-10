@@ -10,8 +10,8 @@ chmod +x ~/.cursor/hooks/auto-commit.sh ~/.cursor/hooks/rewind.sh ~/.cursor/hook
 
 # Commands (rewind.sh path rewritten to its global location).
 sed "s|\.cursor/hooks/rewind\.sh|$HOME/.cursor/hooks/rewind.sh|g" \
-  "$src/commands/rewind.md" > ~/.cursor/commands/rewind.md
-cp "$src/commands/ship.md" "$src/commands/git-prune.md" ~/.cursor/commands/
+  "$src/commands/proper-rewind.md" > ~/.cursor/commands/proper-rewind.md
+cp "$src/commands/proper-ship.md" "$src/commands/proper-prune.md" ~/.cursor/commands/
 
 # Rule file (may or may not load globally — see note below).
 cp "$src/rules/turn-marker.mdc" ~/.cursor/rules/

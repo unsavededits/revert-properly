@@ -82,14 +82,14 @@ degrades gracefully to the bare heuristic.
   snapshot or missed sync, never a blocked prompt or destroyed state.
 - **Never lossy**: anything a reset would discard is committed first and
   pinned under `refs/cursor-backups/` (reflog-independent, local-only,
-  reclaimable via `/git-prune`).
+  reclaimable via `/proper-prune`).
 
 ## Known limits
 
 1. If the agent skipped the nonce AND the reverted turns were bash-only,
    the restore is undetectable (tree is byte-identical to HEAD). Files stay
-   put while the conversation rewinds; fix manually with `/rewind`
-   (`/git-rewind`). Nothing is lost.
+   put while the conversation rewinds; fix manually with
+   `/proper-rewind`. Nothing is lost.
 2. Without a nonce, repeated file content across turns can sync to a
    slightly-too-new snapshot. Recoverable via `refs/cursor-backups/`.
 3. The sync happens at your next message — between the button click and

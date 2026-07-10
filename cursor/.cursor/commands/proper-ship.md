@@ -1,11 +1,11 @@
 # Ship: turn WIP snapshots into clean, reviewable commits
 
-The branch history contains many `wip(cursor)` snapshot commits (automatic
+The branch history contains many `wip(` snapshot commits (automatic
 per-turn journal). Convert everything since the last real commit into a small
 number of well-crafted commits.
 
 1. Find the base: the most recent commit whose message does NOT start with
-   `wip(cursor)` (inspect `git log --format='%h %s' -50`). If I named a base
+   `wip(` (inspect `git log --format='%h %s' -50`). If I named a base
    or branch in my message, use that instead.
 2. Preserve the journal first:
    `git update-ref refs/cursor-backups/$(date +%s)-preship HEAD`
@@ -15,7 +15,7 @@ number of well-crafted commits.
 4. On approval: `git reset --soft <base>`, then for each group stage its
    files (`git add <paths>`) and commit with the agreed message. Real commits
    here — do NOT use `--no-verify`; if pre-commit hooks fail, fix and retry.
-   Fold the `.cursor-turn` marker file into the last group without comment.
+   Fold the `.cursor-turn`/`.claude-turn` marker files into the last group without comment.
 5. Show the final `git log --oneline <base>..HEAD`.
 
 Never push unless I explicitly say so. Do not use `git rebase -i`.

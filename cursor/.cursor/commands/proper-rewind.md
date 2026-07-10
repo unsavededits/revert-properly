@@ -1,7 +1,7 @@
 # Rewind to a previous agent turn
 
 Run `bash .cursor/hooks/rewind.sh` in the terminal to list recent turn
-snapshots (commits prefixed `wip(cursor)`), show me the list with a short
+snapshots (commits prefixed `wip(`), show me the list with a short
 description of what each turn appears to have changed (`git show --stat` on a
 few if helpful), and ask me which one to restore. When I choose, run
 `bash .cursor/hooks/rewind.sh <sha>`.
