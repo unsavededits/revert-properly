@@ -95,14 +95,13 @@ Built-in protections for the messy realities of big repos:
   history. On very large working trees (100k+ files), enable git's
   fsmonitor (`git config core.fsmonitor true`) to keep `git status` fast.
 
-## Caveats, honestly
+## Current caveats
 
-- Snapshot commits use `git add -A` (your uncommitted edits ride along —
-  that's the safety net working) and `--no-verify` (pre-commit hooks run on
+- Snapshot commits use `git add -A` and `--no-verify` (pre-commit hooks run on
   `/ship`'s real commits instead).
 - The turn nonce is model-followed (rule injected every request). A skipped
   bump degrades to heuristic detection, which has two narrow edge cases
-  (see [docs/how-it-works.md](docs/how-it-works.md)) — never breakage.
+  (see [docs/how-it-works.md](docs/how-it-works.md)).
 - Restore sync runs at your *next message*, not at the button click.
 - The journal makes `git log` noisy until you `/ship`. That's the trade.
 - Tested on macOS with Cursor 3.10 and Claude Code 2.1. Hook payload shapes
@@ -111,8 +110,7 @@ Built-in protections for the messy realities of big repos:
 
 ## How it works
 
-The detection trick, the empirical experiments behind it, and the failure
-modes are written up in [docs/how-it-works.md](docs/how-it-works.md).
+[docs/how-it-works.md](docs/how-it-works.md).
 
 ## License
 
