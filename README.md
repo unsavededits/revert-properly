@@ -1,13 +1,12 @@
 # revert-properly
 
 **Make Cursor's checkpoint button and Claude Code's rewind actually restore
-everything — including the changes their built-in systems silently miss.**
+everything, not just edits made with their edit tools.**
 
 ## The problem
 
 Cursor checkpoints and Claude Code rewind (Esc Esc, or the revert button in
-the desktop app / VS Code extension) both share the same blind spot, and
-it's documented, not a bug:
+the desktop app / VS Code extension) both share a blind spot.
 
 > "Checkpointing does not track files modified by bash commands."
 > — [Claude Code docs](https://code.claude.com/docs/en/checkpointing)
