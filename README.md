@@ -1,4 +1,4 @@
-# revert-properly
+# properly-rewind
 
 **Make Cursor's checkpoint button and Claude Code's rewind actually restore
 everything, not just edits made with their edit tools.**
@@ -41,9 +41,9 @@ tools:
    `.claude-turn` counter via its edit tool at the start of any
    file-changing turn, so even bash-only turns leave a checkpoint-tracked
    fingerprint and detection is exact.
-4. **Slash commands** — `/proper-ship`: squash the journal into clean,
-   logically-grouped commits before you push. `/proper-rewind`: file-only
-   rewind keeping the conversation. `/proper-prune`: reclaim disk from old
+4. **Slash commands** — `/ship-properly`: squash the journal into clean,
+   logically-grouped commits before you push. `/rewind-properly`: file-only
+   rewind keeping the conversation. `/prune-properly`: reclaim disk from old
    backup refs.
 
 You keep using your tool exactly as before. The revert button just becomes a
@@ -73,7 +73,7 @@ Designed to be safe on mature repos, with two habits:
 
 - **Work on a feature branch** (you already do). Snapshots land on the
   current branch and never leave your machine unless you push them.
-- **Run `/proper-ship` before pushing.** It squashes the journal into reviewable
+- **Run `/ship-properly` before pushing.** It squashes the journal into reviewable
   commits (and runs your pre-commit hooks, which snapshots deliberately
   skip). For belt-and-braces, `extras/pre-push-guard.sh` is a git pre-push
   hook that refuses to push `wip(` commits.
@@ -89,7 +89,7 @@ Built-in protections for the messy realities of big repos:
   auto-excludes any directory that suddenly produces hundreds of untracked
   files (the `npm install` signature).
 - **Housekeeping**: snapshots trigger a detached `git gc --auto`;
-  `/proper-prune` reclaims space from old backup refs.
+  `/prune-properly` reclaims space from old backup refs.
 - Detection scans only the last 50 snapshots — cost is independent of repo
   history. On very large working trees (100k+ files), enable git's
   fsmonitor (`git config core.fsmonitor true`) to keep `git status` fast.
@@ -97,12 +97,12 @@ Built-in protections for the messy realities of big repos:
 ## Current caveats
 
 - Snapshot commits use `git add -A` and `--no-verify` (pre-commit hooks run on
-  `/proper-ship`'s real commits instead).
+  `/ship-properly`'s real commits instead).
 - The turn nonce is model-followed (rule injected every request). A skipped
   bump degrades to heuristic detection, which has two narrow edge cases
   (see [docs/how-it-works.md](docs/how-it-works.md)).
 - Restore sync runs at your *next message*, not at the button click.
-- The journal makes `git log` noisy until you `/proper-ship`. That's the trade.
+- The journal makes `git log` noisy until you `/ship-properly`. That's the trade.
 - Tested on macOS with Cursor 3.10 and Claude Code 2.1. Hook payload shapes
   may drift with tool updates; the scripts fail open (never block, never
   destroy) and log payloads to `.git/*-payloads.jsonl` for debugging.

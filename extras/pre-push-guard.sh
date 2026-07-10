@@ -17,7 +17,7 @@ while read -r local_ref local_sha remote_ref remote_sha; do
   n=$(git log --oneline --grep='^wip(' $range 2>/dev/null | wc -l | tr -d ' ')
   if [ "$n" -gt 0 ]; then
     echo "pre-push guard: $n 'wip(' journal commit(s) in the push range." >&2
-    echo "Run /proper-ship to squash them first," >&2
+    echo "Run /ship-properly to squash them first," >&2
     echo "or push with --no-verify to override deliberately." >&2
     exit 1
   fi
