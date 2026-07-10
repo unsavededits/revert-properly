@@ -1,4 +1,4 @@
-# agent-git-safety
+# revert-properly
 
 **Make Cursor's checkpoint button and Claude Code's rewind actually restore
 everything — including the changes their built-in systems silently miss.**
