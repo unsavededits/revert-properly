@@ -1,4 +1,4 @@
-# properly-rewind
+# rewind-properly
 
 **Make Cursor's checkpoint button and Claude Code's rewind actually restore
 everything, not just edits made with their edit tools.**
